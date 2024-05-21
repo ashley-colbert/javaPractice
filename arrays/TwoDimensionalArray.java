@@ -1,14 +1,14 @@
-
-import java.util.Arrays;
-
 public class TwoDimensionalArray {
     int arr[][] = null;
+    boolean[][] seatingChart;
 
     public TwoDimensionalArray (int numberOfRows, int numberOfCols) {
         this.arr = new int[numberOfRows][numberOfCols];
+        this.seatingChart = new boolean[numberOfRows][numberOfCols];
         for (int row = 0; row < arr.length; row++){
             for (int col = 0; col < arr[0].length; col++){
                 arr[row][col] = Integer.MIN_VALUE;
+                seatingChart[row][col] = false;
             }
         }
     }
@@ -58,9 +58,42 @@ public class TwoDimensionalArray {
         }
     }
 
+    //seating chart method
+
+    public void displaySeatingChart() {
+      for (int row = 0; row < seatingChart.length; row++) {
+        for (int col = 0; col < seatingChart[0].length; col++) {
+          if (seatingChart[row][col]) {
+            System.out.print(" X ");
+          } else {
+            System.out.print(" O ");
+          }
+        }
+        System.out.println();
+      }
+    }
+
+    public void reserveSeat(int row, int col) {
+      try {
+        if(!seatingChart[row][col]) {
+          seatingChart[row][col] = true;
+          arr[row][col] = 0;
+          System.out.println("Successful reservation made in row number " + row + " seat number " + col);
+        } else {
+          System.out.println("This seat is already taken, please choose another");
+        } 
+      } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("Invalid index");
+      }
+    }
     
     public static void main(String[] args) {
         TwoDimensionalArray twoDimensionalArray = new TwoDimensionalArray(5,5);
-        System.out.println(Arrays.toString(twoDimensionalArray.arr));
-    }
+        twoDimensionalArray.displaySeatingChart();
+
+        twoDimensionalArray.reserveSeat(1,1);
+        twoDimensionalArray.reserveSeat(1,0);
+        twoDimensionalArray.displaySeatingChart();
+
+}
 }
