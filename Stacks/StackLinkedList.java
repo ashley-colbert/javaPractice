@@ -31,6 +31,7 @@ public class StackLinkedList {
     node.next = topOfStack;
     topOfStack = node;
     size ++;
+    System.out.println(nodeValue + " Pushed to the stack");
   }
 
   public void pop() {
@@ -38,6 +39,7 @@ public class StackLinkedList {
       System.out.println("Stack is empty");
       return;
     } else {
+      System.out.println(topOfStack.value + " has been removed from the stack");
       topOfStack = topOfStack.next;
       size -- ;
     }
@@ -48,18 +50,15 @@ public class StackLinkedList {
     System.out.println("The stack is empty");
     return -1;
   } else {
-  System.out.println("The top of the stack is: " + topOfStack);
+  System.out.println("The top of the stack is: " + topOfStack.value);
   return topOfStack.value;
   }
  }
 
-public void deleteStackLinkedList() {
+public void delete() {
   topOfStack = null;
   size = -1;
   System.out.println("The stack has been deleted");
 }
-
-//palindrome
-
 
 }

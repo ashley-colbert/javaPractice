@@ -16,7 +16,6 @@ public class StackArrays {
       return true;
     }
     else {
-      System.out.println("Stack is not empty");
       return false;
     }
   }
@@ -26,7 +25,6 @@ public class StackArrays {
       System.out.println("Stack is full");
       return true;
     } else {
-      System.out.println("Stack is empty");
       return false;
     }
   }
@@ -43,13 +41,14 @@ public class StackArrays {
   }
 
   //implement pop method
-  public void pop(int value) {
+  public int pop() {
     if (isEmpty()) {
       System.out.println("The stack is empty");
+      return -1;
     } else {
-      arr[topOfStack -1] = value;
-      topOfStack --;
+      int value = arr[topOfStack --];
       System.out.println("The value is successfully removed");
+      return value;
     }
   }
 
@@ -59,7 +58,7 @@ public class StackArrays {
     if (isEmpty()) {
       System.out.println("The Stack is empty");
     } else {
-      System.out.println("The top of this stack is: " + topOfStack);
+      System.out.println("The top of this stack is: " + arr[topOfStack]);
     }
   }
 
@@ -75,9 +74,22 @@ public class StackArrays {
   public boolean palindrome(String word) {
     int sizeOfPalStack = word.length();
     StackArrays stackArray = new StackArrays(sizeOfPalStack);
-    
-    return true;
+    for (int i = 0; i < word.length(); i++) {
+      stackArray.push(word.charAt(i));
+    }
+    String reverseWord = "";
+
+    while (!stackArray.isEmpty()) {
+      reverseWord += (char) stackArray.pop();
+    }
+    if (word.equals(reverseWord)) {
+      System.out.println("The word is a palindrome.");
+      return true;
+    } else {
+      System.out.println("Word is not a palindrome");
+    return false;
   }
+}
 
 
 }
