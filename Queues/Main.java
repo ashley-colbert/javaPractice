@@ -2,8 +2,13 @@ package javaPractice.Queues;
 
 public class Main {
   public static void main(String[] args) {
-    QueueArray queueArray = new QueueArray(5);
-    
+    QueueLinkedList queue = new QueueLinkedList();
+    queue.enqueue("10");
+    queue.enqueue("20");
+    System.out.println("Front element is: " + queue.peek());
+    queue.dequeue();
+    System.out.println("Front element is: " + queue.peek());
+    queue.deleteQueue();
   }
 
 
