@@ -63,7 +63,7 @@ public class QueueArray {
 
     //peek
     public int peek() {
-      if(isEmpty()) {
+      if(!isEmpty()) {
         return arr[beginningOfQueue];
       } else {
         System.out.println("The queue is empty");
@@ -74,7 +74,7 @@ public class QueueArray {
     //delete
     public void deleteQueue(){
       arr = null;
-      System.out.println("The queue is successfuly deleted");
+      System.out.println("The queue is successfully deleted");
     }
 
  }
